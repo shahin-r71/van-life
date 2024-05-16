@@ -11,7 +11,7 @@ export default function Van(props){
       fetch(`/api/vans/${id.id}`)
         .then((res) => res.json())
         .then((data) => setvanDetail(data.vans));
-    }, 1500);
+    }, 0);
     return ()=>clearTimeout(tid);
   }, []);
 

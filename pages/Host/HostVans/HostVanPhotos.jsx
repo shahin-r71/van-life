@@ -5,7 +5,7 @@ export default function HostVanPhotos() {
   const {photos}=useOutletContext();
   return (
     <section>
-      <img src={photos} alt="van photo" />
+      <img src={photos} alt="van photo" style={{width:"100%"}}/>
     </section>
   )
 }

@@ -269,6 +269,19 @@ ul li{
 .van-item img{
     width: 23%;
 }
+
+.filter-btns-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+.filter-btns-container button{
+    border: none;
+    border-radius: 2px;
+    padding: 5px;
+}
+
 .info{
     display: flex;
     flex-direction: column;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams,Link } from "react-router-dom";
+import { useParams,Link, useLocation } from "react-router-dom";
 
 export default function Van(props){
   // console.log(useParams());
@@ -14,12 +14,15 @@ export default function Van(props){
     }, 0);
     return ()=>clearTimeout(tid);
   }, []);
-
+  const locationInfo=useLocation();
+  
   return (
     <>
       {vanDetail ? (
         <div className="van-info-container">
-          <Link to={`/vans`}>
+          <Link to={locationInfo.state.search?`..${locationInfo.state.search}`:".."}
+          relative="path"
+          >
             <p className="back">Back to all vans.</p>
           </Link>
           <img src={vanDetail.imageUrl} alt="" />

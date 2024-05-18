@@ -10,8 +10,8 @@ export default function HostVans() {
   },[])
 
    let vanElements = vans.map((van) => (
-     <>
-       <Link to={`/host/vans/${van.id}`}>
+     <section key={van.id}>
+       <Link to={van.id}>
          <div className="van-item">
            <img src={van.imageUrl} alt="" />
            <div className="info">
@@ -20,7 +20,7 @@ export default function HostVans() {
            </div>
          </div>
        </Link>
-     </>
+     </section>
    ));
   return (
     <div className='vans-container'>

@@ -1,17 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import { useParams,Link, Outlet, NavLink } from 'react-router-dom'
+import { getVans } from '../../../api';
 
 
 export default function HostVansDetail() {
   const {id}=useParams();
   const [currentVan, setVan] = useState({});
+  const [loading,setLoading] = useState(false);
+  const [error,setError] = useState(null);
+
   const mycontext={name:currentVan.name,category:currentVan.type,
     description:currentVan.description,photos:currentVan.imageUrl,price:currentVan.price};
   useEffect(()=>{
-    fetch(`/api/host/vans/${id}`)
-      .then((res) => res.json())
-      .then((data) => setVan(data.vans[0]));
+    async function loadHostVan(){
+      setLoading(true);
+      try{
+        const data=await getVans(`/api/host/vans/${id}`);
+        setVan(data[0]);
+      }catch(err){
+        setError(err);
+      }finally{
+        setLoading(false);
+      }
+    }
+  
+    loadHostVan();
   },[])
+
+  if(loading)return <h1>Loading......</h1>
+  if(error)return <h1>Error occured...{error.statusText}</h1>;
   return (
     <section>
       <Link to=".." relative="path" className="back-button">

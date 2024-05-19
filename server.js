@@ -27,7 +27,7 @@ createServer({
         this.get("/vans/:id", (schema, request) => {
             const id = request.params.id
             //return new Response(400, {}, {error: "Error fetching data"})
-            //return schema.vans.find(id)
+            return schema.vans.find(id)
         })
 
         this.get("/host/vans", (schema, request) => {

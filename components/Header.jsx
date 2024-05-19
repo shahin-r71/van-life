@@ -8,10 +8,31 @@ export default function Header(){
       <Link className="site-logo" to="/">
         #VanLife
       </Link>
-      <nav>
-        <NavLink className={({ isActive }) => (isActive ? "activeclass" : null)} to="/host">Host</NavLink>
-        <NavLink className={({ isActive }) => (isActive ? "activeclass" : null)} to="/about">About</NavLink>
-        <NavLink className={({ isActive }) => (isActive ? "activeclass" : null)} to="/vans">Vans</NavLink>
+      <nav className="header-nav">
+        <NavLink
+          className={({ isActive }) => (isActive ? "activeclass" : null)}
+          to="/host"
+        >
+          Host
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "activeclass" : null)}
+          to="/about"
+        >
+          About
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "activeclass" : null)}
+          to="/vans"
+        >
+          Vans
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "activeclass" : null)}
+          to="/login"
+        >
+          <img className="user-img" src={`assets/images/propic.png`} alt="" />
+        </NavLink>
       </nav>
     </header>
   );

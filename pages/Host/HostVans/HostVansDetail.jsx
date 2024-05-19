@@ -1,34 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import { useParams,Link, Outlet, NavLink } from 'react-router-dom'
-import { getVans } from '../../../api';
-
+import React, { useEffect, useState } from "react";
+import { useParams, Link, Outlet, NavLink } from "react-router-dom";
+import { getVans } from "../../../api";
 
 export default function HostVansDetail() {
-  const {id}=useParams();
+  const { id } = useParams();
   const [currentVan, setVan] = useState({});
-  const [loading,setLoading] = useState(false);
-  const [error,setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const mycontext={name:currentVan.name,category:currentVan.type,
-    description:currentVan.description,photos:currentVan.imageUrl,price:currentVan.price};
-  useEffect(()=>{
-    async function loadHostVan(){
+  const mycontext = {
+    name: currentVan.name,
+    category: currentVan.type,
+    description: currentVan.description,
+    photos: currentVan.imageUrl,
+    price: currentVan.price,
+  };
+  useEffect(() => {
+    async function loadHostVan() {
       setLoading(true);
-      try{
-        const data=await getVans(`/api/host/vans/${id}`);
+      try {
+        const data = await getVans(`/api/host/vans/${id}`);
         setVan(data[0]);
-      }catch(err){
+      } catch (err) {
         setError(err);
-      }finally{
+      } finally {
         setLoading(false);
       }
     }
-  
-    loadHostVan();
-  },[])
 
-  if(loading)return <h1>Loading......</h1>
-  if(error)return <h1>Error occured...{error.statusText}</h1>;
+    loadHostVan();
+  }, []);
+
+  if (loading) return <h1>Loading......</h1>;
+  if (error) return <h1>Error occured...{error.statusText}</h1>;
   return (
     <section>
       <Link to=".." relative="path" className="back-button">
@@ -66,7 +70,7 @@ export default function HostVansDetail() {
             Photos
           </NavLink>
         </nav>
-        <Outlet context={mycontext}/>
+        <Outlet context={mycontext} />
       </div>
     </section>
   );

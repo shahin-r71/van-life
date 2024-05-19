@@ -50,7 +50,43 @@ header a:hover {
     color: #161616;
     text-decoration: underline;
 }
+.header-nav{
+    display: flex;
+    align-items: center;
 
+}
+.login-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+.login-form input{
+    padding: 14px;
+    width: 80%;
+    border-radius: 5px;
+    font-size: 18px;
+    border: 1px solid ghostwhite;
+}
+.submit{
+    background-color: #FF8C38;
+    color: white;
+}
+.user-img{
+    width: 80%;
+    height: 100%;
+    border-radius: 15px;
+    /* display: inline-block; */
+}
 .activeclass{
     text-decoration: underline;
     font-weight: bold;

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink,Link } from "react-router-dom";
 
 export default function Header(){
-
+  
+  function fakeLogOut(){
+    localStorage.removeItem("loggedIn");
+  }
   return (
     <header>
       <Link className="site-logo" to="/">
@@ -33,6 +36,8 @@ export default function Header(){
         >
           <img className="user-img" src={`assets/images/propic.png`} alt="" />
         </NavLink>
+        
+        <button onClick={fakeLogOut}>X</button>
       </nav>
     </header>
   );

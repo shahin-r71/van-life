@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
@@ -18,6 +18,7 @@ import HostVanPricing from "./pages/Host/HostVans/HostVanPricing";
 import HostVanPhotos from './pages/Host/HostVans/HostVanPhotos';
 import PageNotFound from './pages/PageNotFound';
 import Login from './Login';
+import Authenticated from './Authenticated';
 
 function App() {
   return (
@@ -25,16 +26,18 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="host" element={<HostLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="income" element={<Income />} />
-            <Route path="vans" element={<HostVans />} />
-            <Route path="vans/:id" element={<HostVansDetail />}>
-              <Route index element={<HostVanDescription />} />
-              <Route path="pricing" element={<HostVanPricing />} />
-              <Route path="photos" element={<HostVanPhotos />} />
+          <Route element={<Authenticated />} >
+            <Route path="host" element={<HostLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="income" element={<Income />} />
+              <Route path="vans" element={<HostVans />} />
+              <Route path="vans/:id" element={<HostVansDetail />}>
+                <Route index element={<HostVanDescription />} />
+                <Route path="pricing" element={<HostVanPricing />} />
+                <Route path="photos" element={<HostVanPhotos />} />
+              </Route>
+              <Route path="review" element={<Review />} />
             </Route>
-            <Route path="review" element={<Review />} />
           </Route>
           <Route path="/about" element={<About />} />
           <Route path="/vans" element={<Vans />} />
@@ -47,6 +50,5 @@ function App() {
   );
 }
 
-ReactDOM
-  .createRoot(document.getElementById('root'))
+createRoot(document.getElementById('root'))
   .render(<App />);

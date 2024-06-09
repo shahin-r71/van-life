@@ -3,7 +3,7 @@ import { NavLink,Link } from "react-router-dom";
 
 export default function Header(){
   
-  function fakeLogOut(){
+  function LogOut(){
     localStorage.removeItem("loggedIn");
   }
   return (
@@ -37,7 +37,7 @@ export default function Header(){
           <img className="user-img" src={`assets/images/propic.png`} alt="" />
         </NavLink>
         
-        <button onClick={fakeLogOut}>X</button>
+        <button onClick={LogOut}>X</button>
       </nav>
     </header>
   );

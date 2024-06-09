@@ -22,13 +22,14 @@ export default function Login() {
       localStorage.setItem("loggedIn",true)
       navigate(from,{replace:true})
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       setError(err);
     } finally {
       // console.log(status);
       setStatus("idle");
     }
   }
+
 
   function handleChange(event) {
     const { name, value } = event.target;

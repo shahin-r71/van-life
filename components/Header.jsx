@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { NavLink,Link } from "react-router-dom";
+import {logoutUser} from "../api";
 
 export default function Header(){
   
-  function LogOut(){
-    localStorage.removeItem("loggedIn");
-  }
+  
   return (
     <header>
       <Link className="site-logo" to="/">
@@ -36,8 +35,8 @@ export default function Header(){
         >
           <img className="user-img" src={`assets/images/propic.png`} alt="" />
         </NavLink>
-        
-        <button onClick={LogOut}>X</button>
+
+        <button onClick={() => logoutUser()}>X</button>
       </nav>
     </header>
   );

@@ -1,8 +1,9 @@
 import React from 'react'
 import { Navigate, Outlet,useLocation } from 'react-router-dom';
+import {  isLoggedIn } from "./api";
 
 export default function Authenticated() {
-   let authenticated = localStorage.getItem("loggedIn");
+   let authenticated = isLoggedIn();
    
    const location =useLocation();
    if (!authenticated) {

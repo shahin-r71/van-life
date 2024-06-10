@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app"; 
 import { getFirestore,collection, getDocs, doc,getDoc, query, where } from "firebase/firestore";
 // import { getFirestore} from "firebase/firestore/lite";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword ,createUserWithEmailAndPassword,signOut } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwwP-yndlfEiMO4qC42cao6gSk5-Hzwho",
@@ -90,4 +90,41 @@ export async function loginUser(creds) {
     // }
 
     // return data
+}
+
+export async function signupUser(user){
+    const {email,password}=user;
+
+    try{
+        const userData= await createUserWithEmailAndPassword(auth, email, password)
+        const user= userData.user;
+        return user;
+    }catch(error){
+        throw error
+    }
+}
+
+export async function logoutUser(){
+    try{
+        const signoutUser= await signOut(auth);
+        console.log(signoutUser)
+    }catch(error){
+        throw error
+    }
+
+}
+
+export function isLoggedIn(){
+    const user = auth.currentUser;
+
+    if (user) {
+        return user;
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    // ...
+    } else {
+        return null;
+    // No user is signed in.
+    }
+
 }

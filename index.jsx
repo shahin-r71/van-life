@@ -18,6 +18,7 @@ import HostVanPricing from "./pages/Host/HostVans/HostVanPricing";
 import HostVanPhotos from './pages/Host/HostVans/HostVanPhotos';
 import PageNotFound from './pages/PageNotFound';
 import Login from './Login';
+import Signup from './Signup';
 import Authenticated from './Authenticated';
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Route path="/vans" element={<Vans />} />
           <Route path="/vans/:id" element={<Van />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>

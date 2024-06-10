@@ -87,6 +87,12 @@ header a:hover {
     background-color: #FF8C38;
     color: white;
 }
+.link{
+    width: 80%;
+}
+.link button{
+    width: 100%;
+}
 .err-msg{
     color: red;
 }

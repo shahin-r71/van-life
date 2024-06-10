@@ -61,35 +61,6 @@ export async function loginUser(creds) {
         throw error;
     }
 
-//     .then((userCredential) => {
-//     // Signed in 
-//     const user = userCredential.user;
-//     console.log(user);
-//     // ...
-//     return user;
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     return error;
-//   });
-
-
-
-    // const res = await fetch("/api/login",
-    //     { method: "post", body: JSON.stringify(creds) }
-    // )
-    // const data = await res.json()
-
-    // if (!res.ok) {
-    //     throw {
-    //         message: data.message,
-    //         statusText: res.statusText,
-    //         status: res.status
-    //     }
-    // }
-
-    // return data
 }
 
 export async function signupUser(user){

@@ -36,7 +36,9 @@ export default function Header(){
           <img className="user-img" src={`assets/images/propic.png`} alt="" />
         </NavLink>
 
-        <button onClick={() => logoutUser()}>X</button>
+        <NavLink to="/">
+          <button onClick={() => logoutUser()}>X</button>
+        </NavLink>
       </nav>
     </header>
   );

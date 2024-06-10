@@ -1,6 +1,6 @@
 import React, { useState } from 'react' 
 import { useLocation, Link } from "react-router-dom";
-import { signupUser } from "./api";
+import { signupUser, isLoggedIn } from "./api";
 
 export default function Signup() {
   const [status,setStatus]=useState("idle");
@@ -27,7 +27,10 @@ export default function Signup() {
     setUser((prev) => ({ ...prev, [name]: value }));
   }
   const { state } = useLocation();
-
+  if (isLoggedIn()) {
+    console.log(isLoggedIn())
+    return <h1>Welcome to the VanLife!</h1>;
+  }
   return (
     <section className="login-container">
       <h1 className={state ? "err-msg" : ""}>
@@ -53,8 +56,11 @@ export default function Signup() {
         <button disabled={status === "submitting"} className="submit">
           {status === "submitting" ? "Signing up" : "Sign Up"}
         </button>
+        
       </form>
-      <Link to="/login">Or log in</Link>
+      <Link to="/login" className='link'>
+        <button className="submit">Already have an account? login</button>
+      </Link>
     </section>
   );
 }

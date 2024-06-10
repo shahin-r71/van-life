@@ -65,7 +65,9 @@ export default function Login() {
           {status === "submitting" ? "Logging in" : "Log in"}
         </button>
       </form>
-      <Link to="/signup">Or sign up</Link>
+      <Link to="/signup" className="link">
+        <button className="submit">Don't have an account? Sign Up</button>
+      </Link>
     </section>
   );
 }
